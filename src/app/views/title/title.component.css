@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;  // ocupa toda la pantalla
+background-color: #fff; // opcional, cambia color de fondo
+}
+
+.logo {
+  width: 40%; // 30% del ancho de la pantalla
+margin-bottom: 250px; // espacio entre logo y botón
+}
+
+.start-btn {
+  width: 200px;
+  height: 50px;
+  background-color: #000;
+  color: #fff;
+  font-size: 18px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.start-btn:hover {
+  background-color: #333; // efecto hover
+}
