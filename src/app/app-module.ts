@@ -9,6 +9,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatButton} from '@angular/material/button';
 import {provideHttpClient} from '@angular/common/http';
 import {DestinationComponent} from './views/destination/destination.component';
+import { Activities } from './views/activities/activities';
+import {MatTab, MatTabGroup} from '@angular/material/tabs';
+
 
 @NgModule({
   declarations: [
@@ -16,13 +19,16 @@ import {DestinationComponent} from './views/destination/destination.component';
     TitleComponent,
     DestinationComponent,
     TitleComponent,
-    ErrorSnackBar
+    ErrorSnackBar,
+    Activities
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatSnackBarModule,
-    MatButton
+    MatButton,
+    MatTabGroup,
+    MatTab,
   ],
   providers: [
     provideHttpClient(),
