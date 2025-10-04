@@ -14,6 +14,9 @@ import {MatTab, MatTabGroup} from '@angular/material/tabs';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import {MatInput} from '@angular/material/input';
+import {FormsModule} from '@angular/forms';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MAT_DATE_LOCALE, provideNativeDateAdapter} from '@angular/material/core';
 
 
 @NgModule({
@@ -36,10 +39,14 @@ import {MatInput} from '@angular/material/input';
     MatIconModule,
     MatInput,
     MatIconButton,
+    FormsModule,
+    MatDatepickerModule
   ],
   providers: [
     provideHttpClient(),
-    provideBrowserGlobalErrorListeners()
+    provideBrowserGlobalErrorListeners(),
+    provideNativeDateAdapter(),
+    { provide: MAT_DATE_LOCALE, useValue: 'es-PE'}
   ],
   bootstrap: [App]
 })

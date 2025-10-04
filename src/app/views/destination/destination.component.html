@@ -1,1 +1,14 @@
 <p>destination works!</p>
+<mat-form-field appearance="outline" subscriptSizing="dynamic">
+  <mat-label>Ciudad</mat-label>
+  <input matInput [(ngModel)]="getPredictionDto.city" />
+</mat-form-field>
+<mat-form-field appearance="outline" subscriptSizing="dynamic">
+  <mat-label>Fecha</mat-label>
+  <input matInput [matDatepicker]="pickerStart" [(ngModel)]="getPredictionDto.date" />
+  <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+  <mat-datepicker #pickerStart></mat-datepicker>
+</mat-form-field>
+<button matButton="filled" (click)="getPrediction()">
+  Iniciar Sesión
+</button>

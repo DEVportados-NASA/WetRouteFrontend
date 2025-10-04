@@ -17,14 +17,14 @@ export class DestinationComponent implements OnInit {
 
   constructor(private predictionService: PredictService, private recommendationService: RecommendationService,
               private snackBar: MatSnackBar) {
-    const now = new Date('2024-01-01');
-    this.getPredictionDto = {
-      city: 'Madrid',
-      date: new Date(now.getFullYear(), now.getMonth(), now.getDay(), 0, 0, 0, 0),
-    } as GetPredictionDto;
+    this.getPredictionDto = {} as GetPredictionDto;
   }
 
   async ngOnInit() {
+
+  }
+
+  getPrediction() {
     this.snackBar.open('Obteniendo predicciones...')
     this.predictionService.getPrediction(this.getPredictionDto).subscribe({
       next: (response) => {
