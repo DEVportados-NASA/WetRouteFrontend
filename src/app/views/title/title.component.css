@@ -3,13 +3,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;  // ocupa toda la pantalla
-background-color: #fff; // opcional, cambia color de fondo
+  height: 100vh;
+  background-color: #fff;
 }
 
 .logo {
-  width: 40%; // 30% del ancho de la pantalla
-margin-bottom: 250px; // espacio entre logo y botón
+  width: 50%;
+  height: auto;
+  margin-bottom: 70px;
+  min-width: 300px;
 }
 
 .start-btn {
@@ -23,7 +25,7 @@ margin-bottom: 250px; // espacio entre logo y botón
   cursor: pointer;
   transition: 0.3s;
 }
-
 .start-btn:hover {
-  background-color: #333; // efecto hover
+  background-color: #333;
+  transform: scale(1.1);
 }

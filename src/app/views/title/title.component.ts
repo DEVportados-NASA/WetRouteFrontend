@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   standalone: false,
@@ -7,5 +8,14 @@ import { Component } from '@angular/core';
   styleUrl: './title.component.css'
 })
 export class TitleComponent {
+  constructor(
+              private router: Router,
+              private route: ActivatedRoute) {
+  }
+
+
+  goToProductDetail() {
+    this.router.navigate(['/destination']);
+  }
 
 }
