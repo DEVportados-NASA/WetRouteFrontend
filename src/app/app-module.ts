@@ -14,6 +14,7 @@ import {MatTab, MatTabGroup} from '@angular/material/tabs';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import {MatInput} from '@angular/material/input';
+import { Navbar } from './shared/component/navbar/navbar';
 import {FormsModule} from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MAT_DATE_LOCALE, provideNativeDateAdapter} from '@angular/material/core';
@@ -26,7 +27,8 @@ import {MAT_DATE_LOCALE, provideNativeDateAdapter} from '@angular/material/core'
     DestinationComponent,
     TitleComponent,
     ErrorSnackBar,
-    Activities
+    Activities,
+    Navbar
   ],
   imports: [
     BrowserModule,
