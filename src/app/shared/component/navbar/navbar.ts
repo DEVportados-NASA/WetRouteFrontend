@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Router} from '@angular/router';
+import {MatTabChangeEvent} from '@angular/material/tabs';
 
 @Component({
   selector: 'app-navbar',
@@ -8,10 +9,12 @@ import {Router} from '@angular/router';
   styleUrl: './navbar.css'
 })
 export class Navbar {
+  tabs = ['/destination', '/activities', '/globe', '/about'];
+
   constructor(private router: Router) {}
 
-  navigate(path: string) {
-    this.router.navigate([path]);
+  onTabChange(event: MatTabChangeEvent) {
+    const route = this.tabs[event.index];
+    this.router.navigate([route]);
   }
-
 }

@@ -1,6 +1,6 @@
-<mat-tab-group class="navbar" backgroundColor="primary">
-  <mat-tab label="Destination" (click)="navigate('/destination')"></mat-tab>
-  <mat-tab label="Activities" (click)="navigate('/activities')"></mat-tab>
-  <mat-tab label="Globe" (click)="navigate('/globe')"></mat-tab>
-  <mat-tab label="About" (click)="navigate('/about')"></mat-tab>
+<mat-tab-group class="navbar" backgroundColor="primary" (selectedTabChange)="onTabChange($event)">
+  <mat-tab label="Destination"></mat-tab>
+  <mat-tab label="Activities"></mat-tab>
+  <mat-tab label="Globe"></mat-tab>
+  <mat-tab label="About"></mat-tab>
 </mat-tab-group>
