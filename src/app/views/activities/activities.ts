@@ -3,6 +3,8 @@ import {FormControl} from '@angular/forms';
 import {startWith} from 'rxjs';
 import {Cities, CitiesResponse} from '../../destination/models/api-responses/cities-response';
 import {CityService} from '../../destination/services/city/city-service';
+import {Activity} from '../../destination/models/api-responses/activities-response';
+import {ActivitiesService} from '../../destination/services/activities/activities-service';
 
 @Component({
   selector: 'app-activities',
@@ -11,19 +13,21 @@ import {CityService} from '../../destination/services/city/city-service';
   styleUrl: './activities.css'
 })
 export class Activities  implements OnInit {
-  cities: Cities[] = [];
+  cities: Activity[] = [];
+  selectedCities: Activity[] = [];
+
 
 
   cityControl = new FormControl('');
   filteredCities: string[] = [];
 
-  constructor(private cityService: CityService) {}
+  constructor(private activityService: ActivitiesService) {}
 
 
   ngOnInit() {
-    this.cityService.getCities().subscribe({
+    this.activityService.getActivities().subscribe({
       next: (data) => {
-        this.cities = data.cities;
+        this.cities = data.activities;
         console.log('Searching city:', this.cities);
 
       },

@@ -5,6 +5,10 @@ import {GetPredictionDto} from '../../destination/models/get-prediction.dto';
 import {ErrorSnackBar} from '../../shared/pages/error-snack-bar/error-snack-bar';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {ErrorMessage} from '../../shared/models/error-message';
+import {Cities} from '../../destination/models/api-responses/cities-response';
+import {FormControl} from '@angular/forms';
+import {CityService} from '../../destination/services/city/city-service';
+import {Router} from '@angular/router';
 
 @Component({
   standalone:false,
@@ -13,32 +17,40 @@ import {ErrorMessage} from '../../shared/models/error-message';
   styleUrl: './destination.component.css'
 })
 export class DestinationComponent implements OnInit {
-  getPredictionDto: GetPredictionDto;
+  cities: Cities[] = [];
 
-  constructor(private predictionService: PredictService, private recommendationService: RecommendationService,
-              private snackBar: MatSnackBar) {
-    this.getPredictionDto = {} as GetPredictionDto;
-  }
 
-  async ngOnInit() {
+  cityControl = new FormControl('');
+  filteredCities: string[] = [];
 
-  }
+  constructor(private cityService: CityService,
+              private router: Router,) {}
 
-  getPrediction() {
-    this.snackBar.open('Obteniendo predicciones...')
-    this.predictionService.getPrediction(this.getPredictionDto).subscribe({
-      next: (response) => {
-        this.snackBar.dismiss();
-        console.log(response);
+
+  ngOnInit() {
+    this.cityService.getCities().subscribe({
+      next: (data) => {
+        this.cities = data.cities;
+        console.log('Searching city:', this.cities);
+
       },
-      error: (error: ErrorMessage) => {
-        this.snackBar.openFromComponent(ErrorSnackBar, {
-          data: {
-            messages: error.message
-          },
-          duration: 2000
-        });
+      error: (err) => {
+        console.error('Error loading cities:', err);
       }
     });
   }
+
+  searchCity() {
+    const city = this.cityControl.value;
+
+
+    if (city) {
+      console.log('Searching city:', city);
+      const today = new Date();
+      const formattedDate = today.toISOString().split('T')[0];
+      this.router.navigate(['/predict', city, formattedDate]);
+    }
+  }
+
 }
+

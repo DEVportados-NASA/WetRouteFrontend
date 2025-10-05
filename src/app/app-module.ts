@@ -19,6 +19,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MAT_DATE_LOCALE, MatOption, provideNativeDateAdapter} from '@angular/material/core';
 import {MatAutocomplete, MatAutocompleteTrigger} from '@angular/material/autocomplete';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { Prediction1 } from './views/prediction1/prediction1';
 
 
 @NgModule({
@@ -29,7 +32,8 @@ import {MatAutocomplete, MatAutocompleteTrigger} from '@angular/material/autocom
     TitleComponent,
     ErrorSnackBar,
     Activities,
-    Navbar
+    Navbar,
+    Prediction1
   ],
   imports: [
     BrowserModule,
@@ -47,7 +51,9 @@ import {MatAutocomplete, MatAutocompleteTrigger} from '@angular/material/autocom
     ReactiveFormsModule,
     MatAutocompleteTrigger,
     MatAutocomplete,
-    MatOption
+    MatOption,
+    MatSelectModule,
+    MatTooltipModule
   ],
   providers: [
     provideHttpClient(),

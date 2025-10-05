@@ -3,33 +3,23 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  padding-left: 100px;
-  padding-top: 50px;
+  padding-left: 20px;
   text-align: left;
   width: 100%;
   box-sizing: border-box;
 }
 
 .title {
+  margin-left: 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  font-size: 4.5rem;
+  font-size: 1.5rem;
   line-height: 0.8;
   word-wrap: break-word;
   transition: font-size 0.3s ease;
 }
 
-.line1 {
-  color: black;
-}
-
-.line2 {
-  margin-left: 70px;
-  color: white;
-  text-shadow: 1px 1px 2px black;
-  font-weight: 800;
-}
 
 .search-container {
   display: flex;
@@ -42,6 +32,12 @@
 .city-field {
   margin-top: 20px;
   width: 60%;
+  border-radius: 8px;
+}
+
+.date-field {
+  margin-top: 20px;
+  width: 20%;
   border-radius: 8px;
 }
 
@@ -61,44 +57,10 @@
   background-color: #333 !important;
 }
 
-
-.logo {
-  width: 20%;
-  height: auto;
-  margin-top: 15%;
-  min-width: 300px;
+.prediction-text {
+  margin-left: 10%;
+  margin-right: 10%; /* 20px en todos los lados */
+  font-size: 1.1rem;      /* Opcional: tamaño de texto */
+  color: #333;            /* Opcional: color de texto */
 }
 
-
-/* 🔽 Responsivo: reduce tamaño del texto en pantallas medianas */
-@media (max-width: 1024px) {
-  .title {
-    font-size: 3.5rem;
-  }
-
-  .line2 {
-    margin-left: 50px;
-  }
-}
-
-/* 🔽 En tablets */
-@media (max-width: 768px) {
-  .title {
-    font-size: 2.8rem;
-  }
-
-  .line2 {
-    margin-left: 30px;
-  }
-}
-
-/* 🔽 En móviles pequeños */
-@media (max-width: 480px) {
-  .title {
-    font-size: 2rem;
-  }
-
-  .line2 {
-    margin-left: 15px;
-  }
-}

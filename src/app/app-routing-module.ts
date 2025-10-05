@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import {TitleComponent} from './views/title/title.component';
 import {DestinationComponent} from './views/destination/destination.component';
 import {Activities} from './views/activities/activities';
+import {Prediction1} from './views/prediction1/prediction1';
 
 const routes: Routes = [
   { path: 'inicio', component: TitleComponent},
-  { path: 'destination', component: Activities},
-  { path: 'activities', component: DestinationComponent},
+  { path: 'destination', component: DestinationComponent},
+  { path: 'activities', component: Activities},
+  { path: 'predict/:city/:date', component: Prediction1},
   { path: '', redirectTo: 'inicio', pathMatch: 'full'},
   { path: '**', redirectTo: 'inicio'}
 ];
