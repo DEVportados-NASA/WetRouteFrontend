@@ -22,6 +22,7 @@ import {MatAutocomplete, MatAutocompleteTrigger} from '@angular/material/autocom
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { Prediction1 } from './views/prediction1/prediction1';
+import { AboutComponent } from './views/about-component/about-component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { Prediction1 } from './views/prediction1/prediction1';
     ErrorSnackBar,
     Activities,
     Navbar,
-    Prediction1
+    Prediction1,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
