@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {startWith} from 'rxjs';
-import {Cities, CitiesResponse} from '../../destination/models/api-responses/cities-response';
-import {CityService} from '../../destination/services/city/city-service';
 import {Activity} from '../../destination/models/api-responses/activities-response';
 import {ActivitiesService} from '../../destination/services/activities/activities-service';
+import {ErrorMessage} from '../../shared/models/error-message';
+import {ErrorSnackBar} from '../../shared/pages/error-snack-bar/error-snack-bar';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-activities',
@@ -13,36 +13,32 @@ import {ActivitiesService} from '../../destination/services/activities/activitie
   styleUrl: './activities.css'
 })
 export class Activities  implements OnInit {
-  cities: Activity[] = [];
-  selectedCities: Activity[] = [];
+  activities: Activity[] = [];
+  selectedActivities: Activity[] = [];
 
-
-
-  cityControl = new FormControl('');
-  filteredCities: string[] = [];
-
-  constructor(private activityService: ActivitiesService) {}
-
+  constructor(private activityService: ActivitiesService, private snackBar: MatSnackBar,
+              private router: Router) {}
 
   ngOnInit() {
+    localStorage.removeItem('activities');
     this.activityService.getActivities().subscribe({
       next: (data) => {
-        this.cities = data.activities;
-        console.log('Searching city:', this.cities);
-
+        this.activities = data.activities;
       },
-      error: (err) => {
-        console.error('Error loading cities:', err);
+      error: (error: ErrorMessage) => {
+        this.snackBar.openFromComponent(ErrorSnackBar, {
+          data: {
+            messages: error.message
+          },
+          duration: 2000
+        });
       }
     });
   }
 
-  searchCity() {
-    const city = this.cityControl.value;
-    if (city) {
-      console.log('Searching city:', city);
-      // Aquí puedes hacer la redirección o búsqueda real
-    }
+  searchActivities() {
+    const activitiesNames = this.selectedActivities.map(activity => activity.name);
+    localStorage.setItem('activities', JSON.stringify(activitiesNames));
+    this.router.navigate(['/activities-recommendation']).then();
   }
-
 }

@@ -1,0 +1,39 @@
+<h1 class="title">
+  <span>You are looking for...</span>
+</h1>
+<div class="content">
+  <div class="search-container">
+    <mat-form-field class="city-field" appearance="outline">
+      <mat-label>Choose activities you wanna do</mat-label>
+      <mat-select [(value)]="selectedActivities" multiple>
+        <mat-option *ngFor="let activity of activities" [value]="activity">
+          {{ activity.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-icon-button
+            matTooltip="Search"
+            class="search-btn" (click)="searchActivities()">
+      <mat-icon>travel_explore</mat-icon>
+    </button>
+  </div>
+</div>
+@if (loadingInfo) {
+  <div style="display: flex; justify-content: center; margin: 10px 0">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </div>
+} @else {
+  <div style="display: flex; justify-content: center; margin: 20px">
+    <mat-accordion style="width: 100%">
+      @for (i of activityRecommendation.items; track i.city) {
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title> {{ i.city }} </mat-panel-title>
+            <mat-panel-description> Ranking: {{ i.ranking }} </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>{{ i.reason }}</p>
+        </mat-expansion-panel>
+      }
+    </mat-accordion>
+  </div>
+}

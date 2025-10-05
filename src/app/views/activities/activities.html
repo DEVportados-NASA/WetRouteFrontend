@@ -7,24 +7,21 @@
   <div class="search-container">
     <mat-form-field class="city-field" appearance="outline">
       <mat-label>Choose activities you wanna do</mat-label>
-      <mat-select [(value)]="selectedCities" multiple>
-        <mat-option *ngFor="let city of cities" [value]="city">
-          {{ city.name }}
+      <mat-select [(value)]="selectedActivities" multiple>
+        <mat-option *ngFor="let activity of activities" [value]="activity">
+          {{ activity.name }}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
     <button mat-icon-button
             matTooltip="Search"
-            class="search-btn">
+            class="search-btn" (click)="searchActivities()">
       <mat-icon>travel_explore</mat-icon>
     </button>
   </div>
 
-
-
   <div class="search-container">
     <img src="brand.png" alt="Logo" class="logo" />
   </div>
-
 </div>

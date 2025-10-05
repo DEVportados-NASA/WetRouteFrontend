@@ -5,6 +5,7 @@ import {DestinationComponent} from './views/destination/destination.component';
 import {Activities} from './views/activities/activities';
 import {Prediction1} from './views/prediction1/prediction1';
 import {AboutComponent} from './views/about-component/about-component';
+import {ActivitiesRecommendation} from './views/activities-recommendation/activities-recommendation';
 
 const routes: Routes = [
   { path: 'inicio', component: TitleComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'activities', component: Activities},
   { path: 'about', component: AboutComponent},
   { path: 'predict/:city/:date', component: Prediction1},
+  { path: 'activities-recommendation', component: ActivitiesRecommendation},
   { path: '', redirectTo: 'inicio', pathMatch: 'full'},
   { path: '**', redirectTo: 'inicio'}
 ];

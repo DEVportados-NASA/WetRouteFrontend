@@ -24,6 +24,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { Prediction1 } from './views/prediction1/prediction1';
 import { AboutComponent } from './views/about-component/about-component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { ActivitiesRecommendation } from './views/activities-recommendation/activities-recommendation';
+import {MatProgressSpinner} from '@angular/material/progress-spinner';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 @NgModule({
@@ -36,7 +39,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     Activities,
     Navbar,
     Prediction1,
-    AboutComponent
+    AboutComponent,
+    ActivitiesRecommendation
   ],
   imports: [
     BrowserModule,
@@ -58,6 +62,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatSelectModule,
     MatTooltipModule,
     MatProgressSpinnerModule,
+    MatTooltipModule,
+    MatProgressSpinner,
+    MatExpansionModule
   ],
   providers: [
     provideHttpClient(),
