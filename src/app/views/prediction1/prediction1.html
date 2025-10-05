@@ -42,6 +42,10 @@
   </p>
 </div>
 
+<div class="content2">
+  <mat-spinner *ngIf="!loaded"></mat-spinner>
+</div>
+
 <div *ngIf="loaded" class="weather-row">
   <!-- Temperatura -->
   <div class="weather-item">

@@ -23,6 +23,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { Prediction1 } from './views/prediction1/prediction1';
 import { AboutComponent } from './views/about-component/about-component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { AboutComponent } from './views/about-component/about-component';
     MatAutocomplete,
     MatOption,
     MatSelectModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
     provideHttpClient(),
