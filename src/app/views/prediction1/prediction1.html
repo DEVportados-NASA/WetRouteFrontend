@@ -36,13 +36,13 @@
     </button>
 </div>
 </div>
-<div class="content">
+<div *ngIf="loaded" class="content">
   <p class="prediction-text" *ngIf="prediction_gen">
     {{ prediction_gen }}
   </p>
 </div>
 
-<div class="weather-row">
+<div *ngIf="loaded" class="weather-row">
   <!-- Temperatura -->
   <div class="weather-item">
     <img src="temp.png" alt="Temperature" />

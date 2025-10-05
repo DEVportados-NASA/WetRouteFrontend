@@ -5,6 +5,9 @@ import {FormControl} from '@angular/forms';
 import {CityService} from '../../destination/services/city/city-service';
 import {PredictService} from '../../destination/services/predict/predict.service';
 import {RecommendationService} from '../../destination/services/recommendation/recommendation.service';
+import {GetPredictionDto} from '../../destination/models/get-prediction.dto';
+import {PredictionDto} from '../../destination/models/prediction.dto';
+import {GetRecommendationsDto} from '../../destination/models/get-recommendations.dto';
 
 @Component({
   selector: 'app-prediction1',
@@ -22,11 +25,16 @@ export class Prediction1 implements OnInit {
 
   citySelected!: string;
   dateSelected!: string;
-  prediction_gen: string =
-    '  This is a test prediction. The weather in your selected city is sunny and pleasant today! This is a test prediction. The weather in your selected city is sunny and pleasant today! prediction. The weather in your selected city is sunny and pleasant t prediction. The weather in your selected city is sunny and pleasant t prediction. The weather in your selected city is sunny and pleasant t prediction. The weather in your selected city is sunny and pleasant t prediction. The weather in your selected city is sunny and pleasant t prediction. The weather in your selected city is sunny and pleasant t prediction. The weather in your selected city is sunny and pleasant t prediction. The weather in your selected city is sunny and pleasant t prediction. The weather in your selected city is sunny and pleasant t prediction. The weather in your selected city is sunny and pleasant t prediction. The weather in your selected city is sunny and pleasant t prediction. The weather in your selected city is sunny and pleasant t prediction. The weather in your selected city is sunny and pleasant t prediction. The weather in your selected city is sunny and pleasant t prediction. The weather in your selected city is sunny and pleasant t prediction. The weather in your selected city is sunny and pleasant t prediction. The weather in your selected city is sunny and pleasant t prediction. The weather in your selected city is sunny and pleasant t';
+  prediction_gen: string = 'Based on our AI analysis of your travel data, we have generated the following tailored recommendations for you:\n\n';
+
+  temperature = { max: 27, min: 27, mean: 27 };
+  mm: number = 0.2; // Lluvia en mm
+  cloudCover: number = 15;
+
+  loaded = false
 
   constructor(private route: ActivatedRoute, private cityService: CityService,
-              private router: Router, predictService: PredictService, recommendationService: RecommendationService   ) {}
+              private router: Router,private predictService: PredictService,private recommendationService: RecommendationService   ) {}
 
   ngOnInit() {
     this.citySelected = this.route.snapshot.paramMap.get('city') || '';
@@ -41,6 +49,69 @@ export class Prediction1 implements OnInit {
         console.error('Error loading cities:', err);
       }
     });
+
+    const dateObj = new Date(this.dateSelected);
+
+    const body: GetPredictionDto = {
+      city: this.citySelected,
+      date: dateObj
+    };
+
+    this.predictService.getPrediction(body).subscribe({
+      next: (res) => {
+        this.temperature.mean= res.prediction.average_temperature;
+        this.temperature.max= res.prediction.max_temperature;
+        this.temperature.min= res.prediction.min_temperature;
+        this.cloudCover= res.prediction.cloud_cover_percentage;
+        this.mm= res.prediction.rain_probability_percentage;
+
+
+        const recommendationsBody: GetRecommendationsDto = {
+          city: this.citySelected,
+          date: dateObj,
+          max_temperature: this.temperature.max,
+          min_temperature: this.temperature.min,
+          average_temperature: this.temperature.mean,
+          rain_probability_percentage: this.mm,
+          cloud_cover_percentage: this.cloudCover
+        };
+
+        this.
+          recommendationService.getRecommendations(recommendationsBody).subscribe({
+          next: (recRes) => {
+            this.prediction_gen += "\t-"
+            this.prediction_gen += recRes.recommendation.firstRecommendation;
+            this.prediction_gen += "\n\n"
+            this.prediction_gen += "\t-"
+            this.prediction_gen += recRes.recommendation.secondRecommendation;
+            this.prediction_gen += "\n\n"
+            this.prediction_gen += "\t-"
+            this.prediction_gen += recRes.recommendation.thirdRecommendation;
+            this.prediction_gen += "\n\n"
+            this.prediction_gen += "\t-"
+            this.prediction_gen += recRes.recommendation.fourthRecommendation;
+            this.prediction_gen += "\n\n"
+            this.prediction_gen += "\t-"
+            this.prediction_gen += recRes.recommendation.fifthRecommendation;
+            this.prediction_gen += "\n"
+
+            console.log('Recommendations:', recRes);
+            this.loaded = true;
+          },
+          error: (err) => {
+            console.error('Error fetching recommendations:', err);
+          }
+
+        });
+
+        console.log('Prediction:', res);
+      },
+      error: (err) => {
+        console.error('Error fetching prediction:', err);
+      }
+    });
+
+
 
 
   }
@@ -62,10 +133,7 @@ export class Prediction1 implements OnInit {
 
 
 
-  // Variables ejemplo
-  temperature = { max: 27, min: 27, mean: 27 };
-  mm: number = 0.2; // Lluvia en mm
-  cloudCover: number = 15;
+
 
 // Funciones para texto y clases según lluvia
   rainLevelText(mm: number): string {
