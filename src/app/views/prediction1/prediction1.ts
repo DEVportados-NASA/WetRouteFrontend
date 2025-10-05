@@ -60,4 +60,29 @@ export class Prediction1 implements OnInit {
     }
   }
 
+
+
+  // Variables ejemplo
+  temperature = { max: 27, min: 27, mean: 27 };
+  mm: number = 0.2; // Lluvia en mm
+  cloudCover: number = 15;
+
+// Funciones para texto y clases según lluvia
+  rainLevelText(mm: number): string {
+    if (mm === 0) return 'None';
+    if (mm <= 2) return 'Light';
+    if (mm <= 5) return 'Moderate';
+    if (mm <= 10) return 'Heavy';
+    return 'Very Heavy';
+  }
+
+  rainLevelClass(mm: number): string {
+    if (mm === 0) return 'none';
+    if (mm <= 2) return 'light';
+    if (mm <= 5) return 'moderate';
+    if (mm <= 10) return 'heavy';
+    return 'very-heavy';
+  }
+
+
 }

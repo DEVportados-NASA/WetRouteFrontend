@@ -42,4 +42,36 @@
   </p>
 </div>
 
+<div class="weather-row">
+  <!-- Temperatura -->
+  <div class="weather-item">
+    <img src="temp.png" alt="Temperature" />
+    <div class="weather-text">
+      <p>Temperature</p>
+      <p>Max: {{ temperature.max }}°</p>
+      <p>Min: {{ temperature.min }}°</p>
+      <p>Mean: {{ temperature.mean }}°</p>
+    </div>
+  </div>
+
+  <!-- Lluvia -->
+  <div class="weather-item">
+    <img src="rain.png" alt="Rain" />
+    <div class="weather-text">
+      <p>Will it rain?</p>
+      <p [ngClass]="rainLevelClass(mm)">{{ rainLevelText(mm) }}</p>
+      <p>mm: {{ mm }}</p>
+    </div>
+  </div>
+
+  <!-- Nubes -->
+  <div class="weather-item">
+    <img src="cloud.png" alt="Cloud Cover" />
+    <div class="weather-text">
+      <p>Cloud Cover</p>
+      <p>{{ cloudCover }}%</p>
+    </div>
+  </div>
+</div>
+
 
