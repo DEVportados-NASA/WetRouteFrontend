@@ -9,7 +9,7 @@ import {MatTabChangeEvent} from '@angular/material/tabs';
   styleUrl: './navbar.css'
 })
 export class Navbar {
-  tabs = ['/destination', '/activities', '/globe', '/about'];
+  tabs = ['/destination', '/activities', '/about'];
 
   constructor(private router: Router) {}
 
