@@ -6,8 +6,8 @@ import {Activities} from './views/activities/activities';
 
 const routes: Routes = [
   { path: 'inicio', component: TitleComponent},
-  { path: 'destination', component: DestinationComponent},
-  { path: 'activities', component: Activities},
+  { path: 'destination', component: Activities},
+  { path: 'activities', component: DestinationComponent},
   { path: '', redirectTo: 'inicio', pathMatch: 'full'},
   { path: '**', redirectTo: 'inicio'}
 ];

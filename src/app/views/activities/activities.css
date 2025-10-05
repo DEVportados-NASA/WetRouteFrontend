@@ -1,32 +1,104 @@
-
-
 .content {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;  /* alinea todo a la izquierda */
+  align-items: flex-start;
   justify-content: flex-start;
-  padding-left: 100px;      /* empieza 100px desde la izquierda */
-  padding-top: 50px;        /* un poco de separación superior */
-  text-align: left;          /* asegura que el texto no se centre */
+  padding-left: 100px;
+  padding-top: 50px;
+  text-align: left;
   width: 100%;
-  box-sizing: border-box;    /* para que padding no rompa layout */
+  box-sizing: border-box;
 }
 
 .title {
   display: flex;
-  flex-direction: column;   /* apila las líneas verticalmente */
-  align-items: flex-start;  /* primera línea alineada a la izquierda */
+  flex-direction: column;
+  align-items: flex-start;
   font-size: 4.5rem;
-  line-height: 0.8;         /* evita que las letras se sobrepongan */
-  word-wrap: break-word;     /* evita que el texto se salga */
+  line-height: 0.8;
+  word-wrap: break-word;
+  transition: font-size 0.3s ease;
+}
+
+.line1 {
+  color: black;
 }
 
 .line2 {
-  margin-left: 70px;       /* desplaza la segunda línea un poco a la derecha */
-  color: #ff6347;          /* color de ejemplo */
+  margin-left: 70px;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+  font-weight: 800;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+}
+
+.city-field {
+  margin-top: 20px;
+  width: 60%;
+  border-radius: 8px;
+}
+
+.search-btn {
+  background-color: black !important;
+  color: #ffffff !important;
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.search-btn:hover {
+  background-color: #333 !important;
 }
 
 
+.logo {
+  width: 20%;
+  height: auto;
+  margin-top: 15%;
+  min-width: 300px;
+}
 
 
+/* 🔽 Responsivo: reduce tamaño del texto en pantallas medianas */
+@media (max-width: 1024px) {
+  .title {
+    font-size: 3.5rem;
+  }
 
+  .line2 {
+    margin-left: 50px;
+  }
+}
+
+/* 🔽 En tablets */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.8rem;
+  }
+
+  .line2 {
+    margin-left: 30px;
+  }
+}
+
+/* 🔽 En móviles pequeños */
+@media (max-width: 480px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .line2 {
+    margin-left: 15px;
+  }
+}

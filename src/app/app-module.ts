@@ -15,9 +15,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import {MatInput} from '@angular/material/input';
 import { Navbar } from './shared/component/navbar/navbar';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MAT_DATE_LOCALE, provideNativeDateAdapter} from '@angular/material/core';
+import {MAT_DATE_LOCALE, MatOption, provideNativeDateAdapter} from '@angular/material/core';
+import {MatAutocomplete, MatAutocompleteTrigger} from '@angular/material/autocomplete';
 
 
 @NgModule({
@@ -42,7 +43,11 @@ import {MAT_DATE_LOCALE, provideNativeDateAdapter} from '@angular/material/core'
     MatInput,
     MatIconButton,
     FormsModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    ReactiveFormsModule,
+    MatAutocompleteTrigger,
+    MatAutocomplete,
+    MatOption
   ],
   providers: [
     provideHttpClient(),
